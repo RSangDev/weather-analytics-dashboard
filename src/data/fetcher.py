@@ -60,7 +60,7 @@ class WeatherDataFetcher:
 
             except Exception as e:  # ✅ CAPTURA QUALQUER EXCEÇÃO
                 logger.warning(
-                    f"Attempt {attempt + 1}/{self.retry_attempts} failed for {city_name}: {e}"  # noqa 
+                    f"Attempt {attempt + 1}/{self.retry_attempts} failed for {city_name}: {e}"  # noqa
                 )
                 if attempt < self.retry_attempts - 1:
                     time.sleep(2**attempt)  # Exponential backoff
@@ -71,7 +71,7 @@ class WeatherDataFetcher:
                     return None
             except Exception as e:  # ✅ ADICIONE ESTE BLOCO
                 logger.warning(
-                    f"Attempt {attempt + 1}/{self.retry_attempts} failed for {city_name}: {e}"  # noqa 
+                    f"Attempt {attempt + 1}/{self.retry_attempts} failed for {city_name}: {e}"  # noqa
                 )
                 if attempt < self.retry_attempts - 1:
                     time.sleep(2**attempt)

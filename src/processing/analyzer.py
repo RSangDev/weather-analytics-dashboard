@@ -64,7 +64,7 @@ class WeatherDataProcessor:
 
         combined_df = pd.concat(all_records, ignore_index=True)
         logger.info(
-            f"Created DataFrame with {len(combined_df)} records from {combined_df['city'].nunique()} cities"  # noqa 
+            f"Created DataFrame with {len(combined_df)} records from {combined_df['city'].nunique()} cities"  # noqa
         )
 
         return combined_df
@@ -190,7 +190,7 @@ class WeatherDataProcessor:
                     "city": row["city"],
                     "time": row["time"],
                     "value": row["precipitation"],
-                    "message": f"Heavy precipitation alert: {row['precipitation']:.1f} mm",  # noqa 
+                    "message": f"Heavy precipitation alert: {row['precipitation']:.1f} mm",  # noqa
                 }
             )
 

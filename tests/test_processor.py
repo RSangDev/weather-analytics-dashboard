@@ -125,7 +125,10 @@ class TestWeatherDataProcessor:
         assert "temp_anomaly" in df.columns
         assert df["temp_anomaly"].any()  # Deve detectar pelo menos uma anomalia
         # Verificar que a temperatura extrema (100°C) foi detectada
-        assert df.loc[df["temperature_2m"] == 100.0, "temp_anomaly"].iloc[0] == True   # noqa 
+        assert (
+            df.loc[df["temperature_2m"] == 100.0, "temp_anomaly"].iloc[0]
+            == True  # noqa
+        )
 
     def test_generate_alerts_high_temperature(self, sample_config):
         """Test high temperature alert generation."""

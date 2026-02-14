@@ -125,7 +125,7 @@ def consolidate_alerts(alerts):
 
             # Criar mensagem consolidada
             if count > 1:
-                message = f"{group['message'].iloc[0]} (pico: {max_value:.1f}, {count}x no dia)"  # noqa 
+                message = f"{group['message'].iloc[0]} (pico: {max_value:.1f}, {count}x no dia)"  # noqa
             else:
                 message = group["message"].iloc[0]
 
@@ -539,7 +539,9 @@ def main():
         )
 
     with col5:
-        anomaly_delta = "normal" if stats["anomalies_detected"] == 0 else "attention"  # noqa 
+        anomaly_delta = (  # noqa
+            "normal" if stats["anomalies_detected"] == 0 else "attention"
+        )  # noqa
         st.metric(
             "⚠️ Anomalias",
             stats["anomalies_detected"],
@@ -547,7 +549,7 @@ def main():
         )
 
     with col6:
-        alert_delta = "normal" if len(consolidated_alerts) == 0 else "attention"  # noqa 
+        alert_delta = "normal" if len(consolidated_alerts) == 0 else "attention"  # noqa
         st.metric(
             "🚨 Alertas", len(consolidated_alerts), help="Alertas meteorológicos ativos"
         )
@@ -719,7 +721,9 @@ def main():
             )
 
         with col_filter2:
-            show_anomalies_only = st.checkbox("Mostrar apenas anomalias", value=False)  # noqa 
+            show_anomalies_only = st.checkbox(  # noqa
+                "Mostrar apenas anomalias", value=False
+            )  # noqa
 
         # Aplicar filtros
         filtered_data = daily_df[daily_df["city"].isin(filter_cities)]
