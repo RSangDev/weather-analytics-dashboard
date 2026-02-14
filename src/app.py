@@ -477,12 +477,14 @@ def main():
 
     st.sidebar.markdown("---")
     st.sidebar.markdown("### 📊 Informações")
-    st.sidebar.info(f"""
+    st.sidebar.info(
+        f"""
     **Cidades Monitoradas:** {len(config['cities'])}
     **Previsão:** {config['processing']['forecast_days']} dias
     **Atualização:** A cada hora
     **Fonte:** Open-Meteo API
-    """)
+    """
+    )
 
     # Fetch and process data
     with st.spinner("🌐 Buscando dados meteorológicos..."):
@@ -689,12 +691,14 @@ def main():
         st.plotly_chart(ma_chart, use_container_width=True)
 
         # Explicação
-        st.info("""
+        st.info(
+            """
         📝 **Sobre a Média Móvel:**
         A linha azul escura representa a média móvel de 3 horas,
         suaviza as flutuações
         de curto prazo e ajuda a identificar tendências gerais de temperatura.
-        """)
+        """
+        )
 
     with tab3:
         st.markdown("#### Dashboard Multi-Métrico")
