@@ -1,0 +1,210 @@
+# Weather Analytics Dashboard Configuration
+
+api:
+  base_url: "https://api.open-meteo.com/v1/forecast"
+  timeout: 30
+  retry_attempts: 3
+  
+cities:
+  # ══════════════════════════════════════════════════════════
+  # REGIÃO NORTE (7 capitais)
+  # ══════════════════════════════════════════════════════════
+  - name: "Manaus"
+    lat: -3.1190
+    lon: -60.0217
+    state: "AM"
+    region: "Norte"
+  
+  - name: "Belém"
+    lat: -1.4558
+    lon: -48.5039
+    state: "PA"
+    region: "Norte"
+  
+  - name: "Porto Velho"
+    lat: -8.7619
+    lon: -63.9039
+    state: "RO"
+    region: "Norte"
+  
+  - name: "Rio Branco"
+    lat: -9.9750
+    lon: -67.8243
+    state: "AC"
+    region: "Norte"
+  
+  - name: "Macapá"
+    lat: 0.0389
+    lon: -51.0664
+    state: "AP"
+    region: "Norte"
+  
+  - name: "Boa Vista"
+    lat: 2.8235
+    lon: -60.6758
+    state: "RR"
+    region: "Norte"
+  
+  - name: "Palmas"
+    lat: -10.1840
+    lon: -48.3336
+    state: "TO"
+    region: "Norte"
+  
+  # ══════════════════════════════════════════════════════════
+  # REGIÃO NORDESTE (9 capitais)
+  # ══════════════════════════════════════════════════════════
+  - name: "São Luís"
+    lat: -2.5297
+    lon: -44.3028
+    state: "MA"
+    region: "Nordeste"
+  
+  - name: "Teresina"
+    lat: -5.0892
+    lon: -42.8019
+    state: "PI"
+    region: "Nordeste"
+  
+  - name: "Fortaleza"
+    lat: -3.7319
+    lon: -38.5267
+    state: "CE"
+    region: "Nordeste"
+  
+  - name: "Natal"
+    lat: -5.7945
+    lon: -35.2110
+    state: "RN"
+    region: "Nordeste"
+  
+  - name: "João Pessoa"
+    lat: -7.1195
+    lon: -34.8450
+    state: "PB"
+    region: "Nordeste"
+  
+  - name: "Recife"
+    lat: -8.0476
+    lon: -34.8770
+    state: "PE"
+    region: "Nordeste"
+  
+  - name: "Maceió"
+    lat: -9.6658
+    lon: -35.7353
+    state: "AL"
+    region: "Nordeste"
+  
+  - name: "Aracaju"
+    lat: -10.9472
+    lon: -37.0731
+    state: "SE"
+    region: "Nordeste"
+  
+  - name: "Salvador"
+    lat: -12.9714
+    lon: -38.5014
+    state: "BA"
+    region: "Nordeste"
+  
+  # ══════════════════════════════════════════════════════════
+  # REGIÃO CENTRO-OESTE (3 capitais + DF)
+  # ══════════════════════════════════════════════════════════
+  - name: "Brasília"
+    lat: -15.7939
+    lon: -47.8828
+    state: "DF"
+    region: "Centro-Oeste"
+  
+  - name: "Goiânia"
+    lat: -16.6869
+    lon: -49.2648
+    state: "GO"
+    region: "Centro-Oeste"
+  
+  - name: "Cuiabá"
+    lat: -15.6014
+    lon: -56.0979
+    state: "MT"
+    region: "Centro-Oeste"
+  
+  - name: "Campo Grande"
+    lat: -20.4697
+    lon: -54.6201
+    state: "MS"
+    region: "Centro-Oeste"
+  
+  # ══════════════════════════════════════════════════════════
+  # REGIÃO SUDESTE (4 capitais)
+  # ══════════════════════════════════════════════════════════
+  - name: "São Paulo"
+    lat: -23.5505
+    lon: -46.6333
+    state: "SP"
+    region: "Sudeste"
+  
+  - name: "Rio de Janeiro"
+    lat: -22.9068
+    lon: -43.1729
+    state: "RJ"
+    region: "Sudeste"
+  
+  - name: "Belo Horizonte"
+    lat: -19.9167
+    lon: -43.9345
+    state: "MG"
+    region: "Sudeste"
+  
+  - name: "Vitória"
+    lat: -20.3155
+    lon: -40.3128
+    state: "ES"
+    region: "Sudeste"
+  
+  # ══════════════════════════════════════════════════════════
+  # REGIÃO SUL (3 capitais)
+  # ══════════════════════════════════════════════════════════
+  - name: "Curitiba"
+    lat: -25.4284
+    lon: -49.2733
+    state: "PR"
+    region: "Sul"
+  
+  - name: "Florianópolis"
+    lat: -27.5954
+    lon: -48.5480
+    state: "SC"
+    region: "Sul"
+  
+  - name: "Porto Alegre"
+    lat: -30.0346
+    lon: -51.2177
+    state: "RS"
+    region: "Sul"
+
+weather_params:
+  - temperature_2m
+  - relative_humidity_2m
+  - precipitation
+  - wind_speed_10m
+  - cloud_cover
+  - pressure_msl
+
+processing:
+  moving_average_window: 3
+  anomaly_threshold: 2.0  # standard deviations
+  forecast_days: 7
+
+alerts:
+  temperature:
+    high_threshold: 35
+    low_threshold: 5
+  wind_speed:
+    high_threshold: 60
+  precipitation:
+    high_threshold: 50
+
+output:
+  data_dir: "data"
+  cache_ttl: 3600  # seconds
